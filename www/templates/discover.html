@@ -1,24 +1,30 @@
 <ion-view view-title="Discover" class="discover-page">
   <ion-content scroll="false">
 
-
-    <div class="list card current-song">
-
+    <div class="list card current-song" ng-class="{skipped: $ctrl.currentSong.rated === false,
+                      favorited: $ctrl.currentSong.rated === true}">
       <div class="item item-image">
-        <img ng-src="/img/ionic.png">
+        <img ng-src="{{$ctrl.currentSong.image_large}}">
       </div>
 
+      <!-- <div class="img-lookahead">
+        <img ng-src="{$ctrl.nextAlbumImage()}">
+      </div> -->
       <div class="item">
-        <h2>It's so cold in Wisconsin</h2>
-        <p>Max Lynch</p>
+        <h2>{{$ctrl.currentSong.title}}
+          <span ng-hide="$ctrl.currentSong.loaded">
+            <i class="ion-load-c"></i>
+          </span>
+        </h2>
+        <p>{{$ctrl.currentSong.artist}}</p>
       </div>
 
       <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item">
+        <a class="tab-item" ng-click="$ctrl.sendFeedback(false)">
           <i class="icon ion-close"></i>
           Skip
         </a>
-        <a class="tab-item">
+        <a class="tab-item" ng-click="$ctrl.sendFeedback(true)">
           <i class="icon ion-heart"></i>
           Favorite
         </a>

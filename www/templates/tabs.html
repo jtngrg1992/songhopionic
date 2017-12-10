@@ -13,7 +13,7 @@ navigation history that also transitions its views in and out.
 
 
   <!-- Favorites Tab -->
-  <ion-tab title="Favorites" icon-off="ion-music-note" icon-on="ion-music-note" href="#/tab/favorites">
+  <ion-tab title="Favorites" badge="$ctrl.favCount()" badge-style="badge-assertive" icon-off="ion-music-note" icon-on="ion-music-note" on-select="$ctrl.enteringFavorites()" on-deselect="$ctrl.leavingFavorites()" href="#/tab/favorites">
     <ion-nav-view name="tab-favorites"></ion-nav-view>
   </ion-tab>
 
